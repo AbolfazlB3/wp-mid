@@ -1,0 +1,10 @@
+/* global main colors used in the project */
+html {
+  /* main background color */
+  --bg-main: #e9e6ed;
+
+  /* primary color for buttons and more + different states of it */
+  --primary: #6115e4;
+  --primary-light: #6644ee;
+  --primary-disabled: #8f8a96;
+}

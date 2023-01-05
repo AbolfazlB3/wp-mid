@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <!-- The Lato Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700&display=swap" rel="stylesheet" />
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- color variables -->
+    <link rel="stylesheet" href="styles/colors.css" />
+
+    <!-- fontawesome import -->
+    <link rel="stylesheet" href="static/fonts/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="static/fonts/fontawesome/css/regular.min.css" />
+    <link rel="stylesheet" href="static/fonts/fontawesome/css/solid.min.css" />
+
+    <link rel="alternate icon" type="image/png" href="/static/favicons/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/static/favicons/favicon.svg" />
+
+    <!-- Page Title -->
+    <title>Github Stalker</title>
+  </head>
+  <body>
+    <main>
+      <div class="cols">
+        <div class="cols__main user" id="user-component">
+          <div class="user__header">
+            <div class="user__header__avatar">
+              <img id="avatar" src="./static/images/user.svg" />
+            </div>
+            <div class="user__header__naming">
+              <a id="username" class="main-name"></a>
+              <div id="fullname" class="secondary-name"></div>
+            </div>
+          </div>
+          <div class="user__body">
+            <div class="user__body__tags" id="tags"></div>
+            <div class="user__body__bio" id="bio-component">
+              <div class="user__body__bio__header">Bio</div>
+              <div class="user__body__bio__content" id="bio"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cols__side">
+          <form class="main-form" id="main-form">
+            <label for="input-username" class="main-form__input">
+              <input
+                id="input-username"
+                class="main-form__input__input"
+                type="text"
+                placeholder="&nbsp;"
+                spellcheck="false"
+                required
+              />
+              <span class="main-form__input__label">Github Username</span>
+              <span class="main-form__input__bg"></span>
+            </label>
+            <button type="submit" class="main-form__submit btn" id="submit" status="disabled">
+              <span>Submit</span>
+              <i class="fa-solid fa-circle-notch fa-spin" style="--fa-animation-duration: 2s"></i>
+            </button>
+            <div class="main-form__error" id="error"></div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>

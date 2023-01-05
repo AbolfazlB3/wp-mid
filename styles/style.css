@@ -1,0 +1,441 @@
+/* global settings for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* top level font settings */
+html,
+body {
+  font-family: Lato;
+  font-size: 16px;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* removing default button styles */
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* the main section of the page with full screen size */
+main {
+  position: relative;
+  height: 100vh;
+  background-color: var(--bg-main);
+  display: flex;
+  overflow: auto;
+}
+
+/* before element inside main to show background image with set opacity */
+main::before {
+  content: "";
+  background: url("../static/images/github.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0.2;
+  position: fixed;
+}
+
+/* the element that separates two primary columns */
+.cols {
+  z-index: 0;
+  display: flex;
+  padding: 2rem;
+  margin: auto;
+}
+
+/* the main column (left one) */
+.cols__main {
+  flex: 1;
+  display: none;
+}
+
+/* the side column (right one) */
+.cols__side {
+  width: 18rem;
+}
+
+/* common styles for both columns */
+.cols > div {
+  padding: 2.5rem;
+  background-color: #ffffffb5;
+  border-radius: 0.2rem;
+  margin: 0.5rem;
+}
+
+/* the heade section of main (user detail) column */
+.user__header {
+  display: flex;
+}
+
+/* profile picture container */
+.user__header__avatar {
+  min-width: 8rem;
+  width: 8rem;
+  height: 8rem;
+}
+
+/* styles for the image inside the profile picture container */
+.user__header__avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 999px;
+}
+
+/* username and fullname container */
+.user__header__naming {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 2rem;
+}
+
+/* mainname (aka username) of user */
+.user__header__naming > .main-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
+}
+
+/* secondary name (aka fullname) of user (optional display)*/
+.user__header__naming > .secondary-name {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* main body of user details */
+.user__body {
+  margin-top: 2rem;
+}
+
+/* tags section inside user body */
+.user__body__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* every single tag element (that contains an icon, a key and a value) (optional display) */
+.user__body__tags .tag {
+  flex: 50%;
+  padding: 0.5rem 1rem 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* tag icon (used fontawesome icons here) */
+.user__body__tags .tag__icon {
+  width: 1.2rem;
+  text-align: center;
+  color: #aaa;
+}
+
+/* tag key */
+.user__body__tags .tag__key {
+  color: #aaa;
+}
+
+/* tag value */
+.user__body__tags .tag__content {
+  white-space: nowrap;
+}
+
+/* user biography main component (optional display) */
+.user__body__bio {
+  margin-top: 4rem;
+  background-color: #66666611;
+  border-radius: 0.3rem;
+  color: #163646;
+}
+
+/* header of user bio (with the text "Bio") */
+.user__body__bio__header {
+  padding: 0.8rem 1.5rem;
+  color: #aaa;
+  border-bottom: solid 1px #aaaaaa33;
+}
+
+/* content of user bio */
+.user__body__bio__content {
+  padding: 1.5rem 1.5rem;
+}
+
+/* the main form in the right column */
+.main-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* form input component */
+.main-form__input {
+  position: relative;
+  margin-top: 1rem;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+/* form input label (shown on top of input) */
+.main-form__input__label {
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  font-size: 1rem;
+  color: #333333;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* form input background (makes it darker with animation on input focus) */
+.main-form__input__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* the actual input element of input component (for user to type in) */
+.main-form__input__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  border: 0;
+  padding: 16px 12px 0 12px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 400;
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #333333;
+  transition: all 0.15s ease;
+}
+
+/* input element styles when mouse is over */
+.main-form__input__input:hover {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* input element styles when element is focused */
+.main-form__input__input:focus {
+  background: rgba(0, 0, 0, 0.05);
+  outline: none;
+  box-shadow: inset 0 -2px 0 var(--primary);
+}
+
+/* styles for the label when the placeholder of input element is now shown
+  (makes label smaller and moves it to top of input component) */
+.main-form__input__input:not(:placeholder-shown) + .main-form__input__label {
+  color: rgba(0, 0, 0, 0.5);
+  transform: translate3d(0, -12px, 0) scale(0.75);
+}
+
+/* styles for the label when the input element is focued
+  (makes label smaller and moves it to top of input component) */
+.main-form__input__input:focus + .main-form__input__label {
+  color: var(--primary);
+  transform: translate3d(0, -12px, 0) scale(0.75);
+}
+
+/* styles for the background element when the input element is focued
+  (makes background darker with animation) (starts animation here) */
+.main-form__input__input:focus + .main-form__input__label + .main-form__input__bg {
+  transform: scaleX(1);
+  transition: all 0.2s ease;
+}
+
+.main-form__error {
+  text-align: center;
+  color: #be2d4a;
+  font-size: 1rem;
+  transition: opacity 1s ease;
+}
+
+.main-form__error.hiding {
+  opacity: 0;
+}
+
+.main-form__error.hidden {
+  opacity: 0;
+  display: none;
+}
+
+/* global button component */
+.btn {
+  --btn-border-radius: 0.2rem;
+  position: relative;
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  z-index: 0;
+  transition: all 0.2s ease;
+  appearance: none;
+  padding: 0.8rem 1rem;
+  border-radius: var(--btn-border-radius);
+  font-size: 1.2rem;
+}
+
+/* before element to show small shadow when button is activated (click and hold) */
+.btn:not(:disabled)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+  border-radius: var(--btn-border-radius);
+  z-index: -1;
+  transition: box-shadow 0.15s;
+}
+
+/* triggering the shadow to be shown with animation */
+.btn:active::before {
+  box-shadow: var(--primary) 0 0 0 0.2rem;
+}
+
+/* after element for button to show small shadow dripping effect when button is clicked (mouse click released) */
+.btn:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  border-radius: var(--btn-border-radius);
+  z-index: -1;
+  box-shadow: var(--primary) 0 0 0 0.5rem;
+  transition: box-shadow 0.3s, opacity 0.3s ease-in;
+}
+
+/* untriggering button animation when activated to be triggered on normal state */
+.btn:active::after {
+  box-shadow: var(--primary) 0 0 0 0;
+  opacity: 0.5;
+  transition: 0s;
+}
+
+/* changing button colors on mouse over */
+.btn:hover {
+  background-color: var(--primary-light);
+  color: #fff;
+}
+
+/* changing button cursor and colors on disabled */
+.btn:disabled,
+.btn[status="disabled"] {
+  background-color: var(--primary-disabled);
+  cursor: not-allowed;
+}
+
+/* setting button cursor on loading state */
+.btn[status="loading"] {
+  cursor: wait;
+}
+
+/* setting default loading icon state to be non-displayed */
+.btn > i {
+  display: none;
+}
+
+/* showing button spinner when loading */
+.btn[status="loading"] > i {
+  display: inline-block;
+}
+
+/* hiding button text when loading */
+.btn[status="loading"] > span {
+  display: none;
+}
+
+/* media queries for different components to make them smaller to fit better on screen */
+@media (max-width: 880px) {
+  /* making main columnt into rows */
+  .cols {
+    flex-flow: column-reverse;
+  }
+  .cols > div {
+    margin: 0.5rem 0;
+  }
+  .cols__side {
+    width: 100%;
+  }
+
+  /* making avatar smaller */
+  .user__header__avatar {
+    min-width: 6rem;
+    width: 6rem;
+    height: 6rem;
+  }
+  .user__header__naming {
+    margin: 0 1.2rem;
+  }
+
+  /* making names smaller */
+  .user__header__naming > .main-name {
+    font-size: 2rem;
+  }
+  .user__header__naming > .secondary-name {
+    font-size: 1rem;
+  }
+}
+
+/* media queries for different components to make them even smaller to fit better on screen */
+@media (max-width: 520px) {
+  /* making avatar smaller */
+  .user__header__avatar {
+    min-width: 4rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  /* making padding on columns smaller to make more space for elements */
+  .cols > div {
+    padding: 1.5rem;
+  }
+
+  /* making name margins smaller */
+  .user__header__naming {
+    margin: 0 1rem;
+  }
+
+  /* making name font sizes smaller */
+  .user__header__naming > .main-name {
+    font-size: 1.6rem;
+  }
+  .user__header__naming > .secondary-name {
+    font-size: 1rem;
+  }
+}
