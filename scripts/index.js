@@ -86,6 +86,7 @@ async function getUser() {
   handleStartLoading();
   mainPromise = fetch(`https://api.github.com/users/${value}`)
     .then(res => {
+      if (res.status === 404) localStorage.setItem("user:" + value, JSON.stringify({ notFound: true }));
       if (400 <= res.status && res.status < 600)
         throw (
           (res.status === 403 && new KnownError("Github API rate limit reached.", false)) ||
@@ -102,8 +103,8 @@ async function getUser() {
       mainPromise = null;
       handleFinishLoading();
     });
-  let result = await mainPromise;
-  if (!result) result = { notFound: true };
+  const result = await mainPromise;
+  if (!result) return;
   localStorage.setItem("user:" + value, JSON.stringify(result));
   renderUserData(result);
 }
